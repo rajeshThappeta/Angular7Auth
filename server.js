@@ -42,4 +42,26 @@ dbo.collection('registercollection').findOne({name:req.body.name},(err,doc)=>{
 })
 
 })
+app.post('/login',(req,res)=>{
+    console.log(req.body);
+    dbo.collection('registercollection').findOne({name:req.body.name},(err,user)=>{
+        console.log('user'+JSON.stringify(user));
+        console.log('err'+err)
+        //if no matching found,findOne() returns null
+        if(user===null) 
+        {
+           res.send({"msg":"invalid user name"})
+        }
+        if(user!==null){
+      bcrypt.compare(req.body.password,user.password,(err,success)=>{
+          if(err) throw err;
+          if(!success)
+          {
+        res.json('wrong pasword')  
+          }
+          res.json({"msg":"user exited"})
+        })
+    }
+    })
+})
 app.listen(3000);
