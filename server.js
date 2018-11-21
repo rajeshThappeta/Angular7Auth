@@ -1,5 +1,4 @@
 
-
 var exp=require('express');
 var app=exp();
 var path=require('path');
@@ -39,7 +38,7 @@ dbo.collection('registercollection').findOne({name:req.body.name},(err,doc)=>{
 
      })
   }
- 
+
 })
 
 })
