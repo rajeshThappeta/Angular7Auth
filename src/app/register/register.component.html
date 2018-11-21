@@ -1,0 +1,7 @@
+<form #ref="ngForm" (ngSubmit)="onSubmit(ref.value)">
+name<input type="text" name="name" [(ngModel)]="name"><br/>
+password<input type="password" name="password" [(ngModel)]="password"><br/>
+dob<input type="date" name="dob" [(ngModel)]="dob"><br/>
+<button type="submit">Register</button><br/>
+
+</form>
